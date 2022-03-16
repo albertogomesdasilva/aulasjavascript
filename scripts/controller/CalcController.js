@@ -5,19 +5,37 @@ class CalcController {
     
         this._currentDate;
          this.initialize();
-         
-    
+
          this._locale = 'pt-BR'
-        
-    
+            
         this._displayCalcEl = document.querySelector("#display");
         this._dateEl = document.querySelector("#data");
         this._timeEl = document.querySelector("#hora");
-    
-        let buttons = document.querySelector('button')
-        buttons.addEventListener('click', e=> {
-            console.log('clicou')
-        })
+        
+        // CLICANDO NO DISPLAY
+         let display = document.querySelector('#display')
+         display.addEventListener('click', e=> {
+             console.log('clicou no display')
+         })
+
+         //FUNÇÃO PARA ACEITAR EVENTO DE CLICK  OU ARASTAR 
+         function addEventListenerAll(element, events, fn) {
+            events.split(' ').forEach(event =>{
+                element.addEventListener(event, fn, false)
+            })
+         }
+
+        // CLICANDO NOS BOTÕES
+        let buttons = document.querySelectorAll('button')
+        console.log(buttons)
+        buttons.forEach((btn, index) => {
+            addEventListenerAll(btn, "click drag", e=> {
+                console.log(btn.innerHTML)
+            })   
+            btn.style.cursor = "pointer" 
+        })    
+
+
     }
     
     
@@ -32,12 +50,12 @@ class CalcController {
  
         }, 1000)
 
-        setTimeout(()=> {
+      /*  setTimeout(()=> {
 
             clearInterval(interval)
             this._displayCalcEl.innerHTML = 'error'
         }, 10000)
-        
+        */
       
         
         var container = document.createElement("div")
@@ -69,16 +87,74 @@ class CalcController {
         var teclado = document.createElement('div')
         teclado.setAttribute('id', 'teclado')
         container.appendChild(teclado)
+
+            // CRIANDO OS BOTÕES          
+        var button = document.createElement('button')
+        button.setAttribute('class', 'btnn' )
+        button.textContent = 'MODEL' ;
+        teclado.appendChild(button)
+        
+        var a = document.createElement('a')
+        a.appendChild(button)
+        a.setAttribute('href', 'modelo1.html' )
+
+        var button = document.createElement('button')
+        button.setAttribute('class', 'btnn' )
+        button.textContent = 'AC' ;
+        teclado.appendChild(a)
+    
+        var button = document.createElement('button')
+        button.setAttribute('class', 'btnn' )
+        button.textContent = 'CE' ;
+        teclado.appendChild(button)
         
         /*  CRIANDO OS BOTÕES  */
-          for(var i = 19; i >= 0; i--) {
+          for(var i = 9; i >= 0; i--) {
 
               var button = document.createElement('button')
               button.setAttribute('class', `button-${i}`)
               button.textContent = i ;
               teclado.appendChild(button)
             }
-         
+      
+            /*  CRIANDO OS BOTÕES DE COMANDOS  */
+          
+              var button = document.createElement('button')
+              button.setAttribute('class', 'btnn' )
+              button.textContent = '%' ;
+              teclado.appendChild(button)
+
+              var button = document.createElement('button')
+              button.setAttribute('class', 'btnn' )
+              button.textContent = '/' ;
+              teclado.appendChild(button)
+
+              var button = document.createElement('button')
+              button.setAttribute('class', 'btnn' )
+              button.textContent = '*' ;
+              teclado.appendChild(button)
+
+              var button = document.createElement('button')
+              button.setAttribute('class', 'btnn' )
+              button.textContent = '-' ;
+              teclado.appendChild(button)
+
+              var button = document.createElement('button')
+              button.setAttribute('class', 'btnn' )
+              button.textContent = '+' ;
+              teclado.appendChild(button)
+
+              var button = document.createElement('button')
+              button.setAttribute('class', 'btnn' )
+              button.textContent = '.' ;
+              teclado.appendChild(button)
+           
+              var button = document.createElement('button')
+              button.setAttribute('class', 'btnn' )
+              button.textContent = '=' ;
+              teclado.appendChild(button)
+
+
 
            
     }
