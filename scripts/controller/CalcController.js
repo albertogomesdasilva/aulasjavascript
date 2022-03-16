@@ -13,9 +13,7 @@ class CalcController {
         this._displayCalcEl = document.querySelector("#display");
         this._dateEl = document.querySelector("#data");
         this._timeEl = document.querySelector("#hora");
-    }
-
-    initButtonsEvents(){
+    
         let buttons = document.querySelector('button')
         buttons.addEventListener('click', e=> {
             console.log('clicou')
