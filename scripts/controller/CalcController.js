@@ -5,6 +5,7 @@ class CalcController {
     
         this._currentDate;
          this.initialize();
+         this.operation = [];
 
          this._locale = 'pt-BR'
             
@@ -35,6 +36,72 @@ class CalcController {
             btn.style.cursor = "pointer" 
         })    
 
+        function clearAll() {
+            this._operation = [];
+        }
+        function clearEntry(){
+            this._operation.pop();
+        };
+        function setError(){
+            this.displayCalcEl = "ERROR"
+        }
+
+        function addOperation(value){
+            this._operation.push(value)
+        }
+
+        function execBtn(value) {
+            switch (value){
+                case 'AC':
+                    this.clearAll();
+                    break;
+
+                case 'CE' :
+                    this.clearEntry();
+                    break;
+                case '+' :
+                    
+                    break;
+                case '-' :
+                    this.clearEntry();
+                    break;
+                case '*' :
+                    
+                    break;
+                case '/' :
+                    this.clearEntry();
+                    break;
+                case '¨%' :
+                    
+                    break;
+                case '=' :
+                    this.clearEntry();
+                    break;
+                case '.' :
+                    
+                    break;
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    this._addOperation(parseInt(value));
+                break;
+
+                default:
+                   
+                    break;
+
+
+
+
+            }        }
+
 
     }
     
@@ -48,16 +115,14 @@ class CalcController {
             this._dateEl.innerHTML = new Date().toLocaleDateString(this._locale)
             this._timeEl.innerHTML = new Date().toLocaleTimeString(this._locale)
  
-        }, 1000)
-
-      /*  setTimeout(()=> {
-
-            clearInterval(interval)
+        }, 1'0'00')''
+''
+'      /*  setTimeout(()=> '{''''''''
+''
+'            clearInterval(interval)
             this._displayCalcEl.innerHTML = 'error'
         }, 10000)
         */
-      
-        
         var container = document.createElement("div")
         container.setAttribute('id', "container")
         container.textContent = "CALCULADORA"
@@ -81,7 +146,7 @@ class CalcController {
         
         var display = document.createElement('div')
         display.setAttribute('id', 'display');
-        display.textContent = '0123456789';
+        display.textContent = '';
         container.appendChild(display)
         
         var teclado = document.createElement('div')
@@ -153,6 +218,8 @@ class CalcController {
               button.setAttribute('class', 'btnn' )
               button.textContent = '=' ;
               teclado.appendChild(button)
+
+
 
 
 
